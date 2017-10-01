@@ -15,7 +15,7 @@ class DataFetcher:
     parser.add_argument('--field', const="field", nargs='?',
                         help='Management,Business')
     parser.add_argument('--education', const="education", nargs='?',
-                        help='A:University Degree   B:Two to three years of post-secondary education at community college   C:Completion of secondary school and some short-duration courses     D:Short work demonstration or on-the-job training')
+                        help='0-1:University Degree   2-3:Two to three years of post-secondary education at community college   4-5:Completion of secondary school and some short-duration courses     6-7:Short work demonstration or on-the-job training')
     parser.add_argument('--spec', const="spec", nargs='?',
                         help='Management,Business')
     parser.add_argument('--location', const="location", nargs='?',default="British Columbia")
@@ -49,6 +49,7 @@ class DataFetcher:
     newArray = []
     for array in self.FilteredArray:
       if array[index] == self.location:
+        array[self.Fields.index(2025)] = array[self.Fields.index(2025)][:-1]
         newArray.append(array)
     self.FilteredArray = newArray
 
